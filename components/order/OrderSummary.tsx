@@ -11,6 +11,7 @@ import { toast } from "react-toastify"
 export default function OrderSummary() {
 
   const order = useStore((state) => state.order)
+  const clearOrder = useStore((state) => state.clearOrder)
   const total = useMemo(() => order.reduce((total, item) => total + (item.quantity * item.price), 0) ,[order])
 
   const handleCreateOrder = async (formData: FormData) => {
@@ -35,6 +36,9 @@ export default function OrderSummary() {
         toast.error(issue.message)
       });
     }
+
+    toast.success("Pedido realizado correctamente")
+    clearOrder()
   }
 
 
@@ -62,7 +66,7 @@ export default function OrderSummary() {
             <input
               type="text"
               placeholder="Tu nombre"
-              className="bg-white border border-b-gray-100 p-2 w-full"
+              className="bg-white border shadow border-gray-100 p-2 w-full"
               name="name"
             />
             <input 

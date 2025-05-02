@@ -4,7 +4,7 @@ import AdminSidebar from "@/components/admin/AdminSidebar";
 export default async function AdminLayout({children}: Readonly<{children: React.ReactNode}>) {
     return (
         <>
-            <div className="md:flex">
+            <div className="md:flex w-full">
                 <aside className="md:w-72 md:h-screen bg-white">
                     <AdminSidebar />
                 </aside>

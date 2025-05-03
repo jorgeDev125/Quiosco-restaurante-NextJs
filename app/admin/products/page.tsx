@@ -4,14 +4,14 @@ import { prisma } from "@/src/lib/prisma";
 import ProductsPagination from '../../../components/products/ProductsPagination';
 import { redirect } from "next/navigation";
 import Link from "next/link";
-import ProductSearch from "@/components/products/ProductSearch";
+import ProductSearchForm from "@/components/products/ProductSearchForm";
 
 async function productCount() {
     return await prisma.product.count()
 }
 
 
-async function getProducts (page: number, pageSize: number) {
+async function getProducts(page: number, pageSize: number) {
     const skip = (page - 1) * pageSize
 
     const products = await prisma.product.findMany({
@@ -19,27 +19,27 @@ async function getProducts (page: number, pageSize: number) {
         skip,
         include: {
             category: true
-            }
-        })
+        }
+    })
     return products
 }
 
 export type ProductsWithCategory = Awaited<ReturnType<typeof getProducts>>
 
-export default async function ProductsPage({searchParams}: {  searchParams: Promise<{ [key: string]: string | string[] | undefined }>; }) {
+export default async function ProductsPage({ searchParams }: { searchParams: Promise<{ [key: string]: string | string[] | undefined }>; }) {
     const { page = "1" } = await searchParams;
     const currentPage = parseInt(page as string, 10) || 1;
     const pageSize = 10
 
     if (currentPage < 1) redirect("/admin/products")
-    
-    const productsData = getProducts( currentPage, pageSize )
+
+    const productsData = getProducts(currentPage, pageSize)
     const totalProductsData = productCount()
-    const [ products, totalProducts ] = await Promise.all([productsData, totalProductsData])
+    const [products, totalProducts] = await Promise.all([productsData, totalProductsData])
     const totalPages = Math.ceil(totalProducts / 10)
-    
+
     if (currentPage > totalPages) redirect("/admin/products")
-    
+
     return (
         <>
             <Heading>Administrar Productos</Heading>
@@ -49,16 +49,16 @@ export default async function ProductsPage({searchParams}: {  searchParams: Prom
                     className="bg-amber-400 w-full lg:w-auto text-xl px-10 py-3 text-center font-bold cursor-pointer"
                     href={"/admin/products/new"}
                 >Crear Producto</Link>
-                <ProductSearch />
+                <ProductSearchForm />
             </div>
 
-            <ProductTable 
+            <ProductTable
                 products={products}
             />
-            <ProductsPagination 
+            <ProductsPagination
                 page={currentPage}
                 totalPages={totalPages}
-            />             
+            />
         </>
     )
 }

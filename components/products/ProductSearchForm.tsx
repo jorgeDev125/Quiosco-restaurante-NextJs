@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 import { toast } from "react-toastify"
 
 
-export default function ProductSearch() {
+export default function ProductSearchForm() {
     const router = useRouter()
     const handleSearchForm = (formData: FormData) => {
         const data = {

@@ -11,7 +11,7 @@ type ProductCardProps = {
 export default function ProductCard({ product }: ProductCardProps) {
     const imagePath = getImagePath(product.image)
     return (
-        <div className=" bg-white">
+        <div className="flex flex-col justify-between h-full bg-white">
                 <Image
                     width={458}
                     height={500}

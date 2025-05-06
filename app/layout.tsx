@@ -17,7 +17,7 @@ export default function RootLayout({ children }: Readonly<{children: React.React
   return (
     <html lang="en">
       <body
-        className={`${inter.className} bg-gray-200 flex`}
+        className={`${inter.className} bg-gray-200`}
       >
         {children}
       </body>

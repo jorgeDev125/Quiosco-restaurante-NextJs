@@ -11,10 +11,9 @@ export default function ImageUpload({image}: {image: string | undefined}) {
   return (
     <CldUploadWidget
       onSuccess={(result, {widget})=> {
-        console.log(result)
           if (result.event === "success") {
             widget.close()
-            //@ts-ignore
+            //@ts-expect-error: Unreachable code error
             setImageUrl(result.info?.secure_url)
           }
       } }
@@ -47,13 +46,15 @@ export default function ImageUpload({image}: {image: string | undefined}) {
             {image && !imageUrl && (
               <div className="space-y-2">
                 <label className="font-bold">Imagen Actual:</label>
-                <div className="relative w-64 h-64">
-                  <Image
-                    fill
-                    src={getImagePath(image)}
-                    style={{objectFit: "contain"}}
-                    alt="Imagen Producto"
-                  />
+                <div className="flex justify-center">
+                  <div className="relative items-center w-64 h-64">
+                    <Image
+                      fill
+                      src={getImagePath(image)}
+                      style={{objectFit: "contain"}}
+                      alt="Imagen Producto"
+                      />
+                  </div>
                 </div>
               </div>
             )}

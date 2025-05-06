@@ -1,5 +1,6 @@
 import ProductSearchForm from "@/components/products/ProductSearchForm";
 import ProductTable from "@/components/products/ProductsTable";
+import GoBackButton from "@/components/ui/GoBackButton";
 import Heading from "@/components/ui/Heading";
 import { prisma } from "@/src/lib/prisma";
 
@@ -24,6 +25,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
     return (
         <>
             <Heading>Resultados de la busqueda: {search}</Heading>
+            <GoBackButton />            
             <div className="flex flex-col gap-5 lg:flex-row lg:justify-end">
                 <ProductSearchForm />
             </div>

@@ -25,7 +25,7 @@ export default async function SearchPage({ searchParams }: { searchParams: Promi
     return (
         <>
             <Heading>Resultados de la busqueda: {search}</Heading>
-            <GoBackButton />
+            <GoBackButton />            
             <div className="flex flex-col gap-5 lg:flex-row lg:justify-end">
                 <ProductSearchForm />
             </div>

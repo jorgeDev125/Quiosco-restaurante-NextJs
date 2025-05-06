@@ -4,9 +4,9 @@ import Heading from "@/components/ui/Heading";
 import { OrderWithProducts } from "@/src/types";
 import useSWR from "swr";
 
-export default function OrdersPage() {
+export default  function OrdersPage() {
     const url = "/admin/orders/api"
-    const fetcher = () => fetch(url).then(res => res.json()).then(data => data)
+    const fetcher = () => fetch(url).then(res=> res.json()).then(data=>data)
     const { data, isLoading } = useSWR<OrderWithProducts[]>(url, fetcher, {
         refreshInterval: 60000,
         revalidateOnFocus: false,

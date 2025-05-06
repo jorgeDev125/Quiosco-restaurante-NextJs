@@ -3,14 +3,14 @@ import ImageUpload from "./ImageUpload"
 import { Product } from "@prisma/client"
 
 async function getCategories() {
-    return await prisma.category.findMany()
+  return await prisma.category.findMany()
 }
 
 type ProductFormProps = {
     product?: Product
 }
 
-export default async function ProductForm({ product }: ProductFormProps) {
+export default async function ProductForm({product}: ProductFormProps) {
     const categories = await getCategories()
     return (
         <>
@@ -56,14 +56,14 @@ export default async function ProductForm({ product }: ProductFormProps) {
                 >
                     <option value="">-- Seleccione --</option>
                     {categories.map(category => (
-                        <option
-                            key={category.id}
+                        <option 
+                            key={category.id} 
                             value={category.id}
                         >{category.name}</option>
                     ))}
                 </select>
             </div>
-            <ImageUpload
+            <ImageUpload 
                 image={product?.image}
             />
         </>

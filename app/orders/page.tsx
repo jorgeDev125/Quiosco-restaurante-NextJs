@@ -17,16 +17,16 @@ export default function OrdersPage() {
         <>
             <h1 className="text-center mt-20 text-6xl font-black">Ordenes Listas</h1>
             <Logo />
-                {data.length ? (
-                    <div className="grid grid-cols-1  sm:grid-cols-2 gap-5 max-w-5xl mx-auto mt-10 ">
-                        {data.map(order => (
-                        <LastOrderItem 
-                            key={order.id} 
+            {data.length ? (
+                <div className="grid grid-cols-1  sm:grid-cols-2 gap-5 max-w-5xl mx-auto mt-10 ">
+                    {data.map(order => (
+                        <LastOrderItem
+                            key={order.id}
                             order={order}
                         />
-                        ))}
-                    </div>
-                ) : <p className="text-center my-10">No hay ordenes listas</p>}
+                    ))}
+                </div>
+            ) : <p className="text-center my-10">No hay ordenes listas</p>}
         </>
     )
 }

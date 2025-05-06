@@ -10,10 +10,10 @@ type CategoryIconProps = {
 }
 
 export default function CategoryIcon({ category }: CategoryIconProps) {
-    const params = useParams<{category: string}>()
+    const params = useParams<{ category: string }>()
     return (
-        <Link 
-            href={`/order/${category.slug}`} 
+        <Link
+            href={`/order/${category.slug}`}
             className={`${params.category === category.slug ? "bg-amber-400 text-white" : ""} flex items-center gap-4 w-full border-t border-gray-200 p-3 last-of-type:border-b`}
         >
             <div className="w-16 h-16 relative">

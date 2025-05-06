@@ -5,13 +5,13 @@ type ProductsPaginationProps = {
   totalPages: number
 }
 
-export default function ProductsPagination({page, totalPages}: ProductsPaginationProps) {
+export default function ProductsPagination({ page, totalPages }: ProductsPaginationProps) {
 
-  const pages = Array.from({length: totalPages}, (_, i)=> i + 1 )
+  const pages = Array.from({ length: totalPages }, (_, i) => i + 1)
 
   return (
     <nav className="flex justify-center py-10">
-      { page > 1 && (
+      {page > 1 && (
         <Link
           className="bg-white px-4 py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0"
           href={`/admin/products?page=${page - 1}`}
@@ -19,16 +19,16 @@ export default function ProductsPagination({page, totalPages}: ProductsPaginatio
       )}
       {
         pages.map(currentPage => (
-          <Link 
+          <Link
             key={currentPage}
             className={`${page === currentPage && "font-black"} bg-white px-4 py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0`}
-            href={`/admin/products?page=${currentPage}`}  
+            href={`/admin/products?page=${currentPage}`}
           >
             {currentPage}
           </Link>
         ))
       }
-      { page < totalPages && (
+      {page < totalPages && (
         <Link
           className="bg-white px-4 py-2 text-sm text-gray-900 ring-1 ring-inset ring-gray-300 focus:z-20 focus:outline-offset-0"
           href={`/admin/products?page=${page + 1}`}

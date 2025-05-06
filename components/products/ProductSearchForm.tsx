@@ -18,7 +18,7 @@ export default function ProductSearchForm() {
             return
         }
         //its possible to use both: redirect or useRouter
-       router.push(`/admin/products/search?search=${result.data.search}`)
+        router.push(`/admin/products/search?search=${result.data.search}`)
     }
 
 

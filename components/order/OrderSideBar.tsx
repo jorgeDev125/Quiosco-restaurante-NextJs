@@ -15,8 +15,8 @@ export default async function OrderSideBar() {
     <aside className="md:w-72 md:h-screen bg-white">
       <Logo />
       <nav className="mt-10">
-        {categories.map(category => 
-          <CategoryIcon key={category.id} category={category}/>
+        {categories.map(category =>
+          <CategoryIcon key={category.id} category={category} />
         )}
       </nav>
     </aside>

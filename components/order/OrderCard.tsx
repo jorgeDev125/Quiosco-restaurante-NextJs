@@ -21,12 +21,12 @@ export default function OrderCard({ order }: OrderCardProps) {
                 <dl className="mt-3 space-y-4">
                     {order.orderProducts.map(product => (
                         <div key={product.id} className="flex items-center gap-2 border-t border-gray-200 pt-4">
-                            <dt className="flex items-center text-sm text-gray-600"> 
+                            <dt className="flex items-center text-sm text-gray-600">
                                 <span className="font-black">({product.quantity}) {" "}</span>
                             </dt>
                             <dd className="text-sm font-medium text-gray-900">{product.product.name}</dd>
                         </div>
-                    ))} 
+                    ))}
                 </dl>
             </div>
             <div>
@@ -35,22 +35,22 @@ export default function OrderCard({ order }: OrderCardProps) {
                     <dd className="text-base font-medium text-gray-900">{formatCurrency(order.total)}</dd>
                 </div>
                 <form action={completeOrder}>
-                    <input 
+                    <input
                         type="hidden"
                         value={order.id}
                         name="order_id"
-                        />
+                    />
 
                     <input
                         type="submit"
                         className={(isOrderCompleted ? ` bg-gray-300` : " bg-indigo-600 hover:bg-indigo-800 cursor-pointer") + "  text-white w-full mt-5 p-3 uppercase font-bold "}
-                        value={isOrderCompleted ? 'Orden Completada': 'Marcar Orden Completada'}
-                        onClick={()=>{
+                        value={isOrderCompleted ? 'Orden Completada' : 'Marcar Orden Completada'}
+                        onClick={() => {
                             setIsOrderCompleted(true)
                             toast.success("Orden completada")
-                        } }
+                        }}
                     />
-                
+
                 </form>
             </div>
         </section>

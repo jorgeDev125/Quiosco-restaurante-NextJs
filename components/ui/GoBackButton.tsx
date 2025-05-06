@@ -7,7 +7,7 @@ export default function GoBackButton() {
     return (
         <button
             className="bg-amber-400 w-full lg:w-auto text-xl px-10 py-3 text-white text-center font-bold cursor-pointer"
-            onClick={()=> router.back()}
+            onClick={() => router.back()}
         >Volver a Productos</button>
     )
 }

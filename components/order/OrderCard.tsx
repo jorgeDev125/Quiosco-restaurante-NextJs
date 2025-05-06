@@ -1,12 +1,15 @@
 import { OrderWithProducts } from "@/src/types"
 import { formatCurrency } from '../../src/utils/index';
 import { completeOrder } from "@/actions/complete-order-action";
+import { useState } from "react";
+import { toast } from "react-toastify";
 
 
 type OrderCardProps = {
     order: OrderWithProducts
 }
 export default function OrderCard({ order }: OrderCardProps) {
+    const [isOrderCompleted, setIsOrderCompleted] = useState(false)
     return (
         <section
             aria-labelledby="summary-heading"
@@ -37,11 +40,17 @@ export default function OrderCard({ order }: OrderCardProps) {
                         value={order.id}
                         name="order_id"
                         />
+
                     <input
                         type="submit"
-                        className="bg-indigo-600 hover:bg-indigo-800 text-white w-full mt-5 p-3 uppercase font-bold cursor-pointer"
-                        value='Marcar Orden Completada'
-                        />
+                        className={(isOrderCompleted ? ` bg-gray-300` : " bg-indigo-600 hover:bg-indigo-800 cursor-pointer") + "  text-white w-full mt-5 p-3 uppercase font-bold "}
+                        value={isOrderCompleted ? 'Orden Completada': 'Marcar Orden Completada'}
+                        onClick={()=>{
+                            setIsOrderCompleted(true)
+                            toast.success("Orden completada")
+                        } }
+                    />
+                
                 </form>
             </div>
         </section>

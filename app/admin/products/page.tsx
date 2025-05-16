@@ -36,7 +36,7 @@ export default async function ProductsPage({ searchParams }: { searchParams: Pro
     const productsData = getProducts(currentPage, pageSize)
     const totalProductsData = productCount()
     const [products, totalProducts] = await Promise.all([productsData, totalProductsData])
-    const totalPages = Math.ceil(totalProducts / 10)
+    const totalPages = Math.ceil(totalProducts / pageSize)
 
     if (currentPage > totalPages) redirect("/admin/products")
 

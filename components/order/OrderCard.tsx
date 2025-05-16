@@ -13,7 +13,7 @@ export default function OrderCard({ order }: OrderCardProps) {
     return (
         <section
             aria-labelledby="summary-heading"
-            className="flex flex-col justify-between mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6  lg:mt-0 lg:p-8 space-y-4"
+            className={(isOrderCompleted && "hidden") + " flex flex-col justify-between mt-16 rounded-lg bg-gray-50 px-4 py-6 sm:p-6  lg:mt-0 lg:p-8 space-y-4" }
         >
             <div>
                 <p className='text-2xl font-medium text-gray-900'>Cliente: {order.name} </p>
@@ -40,17 +40,15 @@ export default function OrderCard({ order }: OrderCardProps) {
                         value={order.id}
                         name="order_id"
                         />
-
                     <input
                         type="submit"
-                        className={(isOrderCompleted ? ` bg-gray-300` : " bg-indigo-600 hover:bg-indigo-800 cursor-pointer") + "  text-white w-full mt-5 p-3 uppercase font-bold "}
-                        value={isOrderCompleted ? 'Orden Completada': 'Marcar Orden Completada'}
+                        className="bg-indigo-600 hover:bg-indigo-800 cursor-pointer  text-white w-full mt-5 p-3 uppercase font-bold"
+                        value="Marcar Orden Completada"
                         onClick={()=>{
                             setIsOrderCompleted(true)
                             toast.success("Orden completada")
                         } }
                     />
-                
                 </form>
             </div>
         </section>

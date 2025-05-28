@@ -15,7 +15,7 @@ type ProductTableProps = {
     await deleteProduct(id);
 } */
 
-export default function ProductTable({ products }: ProductTableProps) { 
+export default function ProductTable({ products }: ProductTableProps) {
     return (
         <div className="px-4 sm:px-6 lg:px-8 mt-20">
             <div className="mt-8 flow-root ">
@@ -51,7 +51,7 @@ export default function ProductTable({ products }: ProductTableProps) {
                                             {product.category.name}
                                         </td>
                                         <td className="relative whitespace-nowrap flex justify-between py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-0">
-                                            <Link 
+                                            <Link
                                                 className="text-indigo-600 hover:text-indigo-800"
                                                 href={`/admin/products/${product.id}/edit`}
                                             >Editar<span className="sr-only">, {product.name}</span> </Link>

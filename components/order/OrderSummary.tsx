@@ -12,7 +12,7 @@ export default function OrderSummary() {
 
   const order = useStore((state) => state.order)
   const clearOrder = useStore((state) => state.clearOrder)
-  const total = useMemo(() => order.reduce((total, item) => total + (item.quantity * item.price), 0), [order])
+  const total = useMemo(() => order.reduce((total, item) => total + (item.quantity * item.price), 0) ,[order])
 
   const handleCreateOrder = async (formData: FormData) => {
     const data = {
@@ -50,18 +50,18 @@ export default function OrderSummary() {
 
       {order.length === 0 ? <p className="text-center my-10">El pedido esta vacio</p> : (
         <div className="mt-5">
-          {order.map(item => (
+          {order.map(item=> (
             <ProductDetails key={item.id} item={item} />
-
+              
           ))}
 
           <p className="text-2xl mt-20 text-center">
             Total a Pagar: {" "}
             <span className="font-bold">{formatCurrency(total)}</span>
           </p>
-          <form
+          <form 
             className="w-full mt-10 space-y-5"
-            action={handleCreateOrder}
+            action={handleCreateOrder}  
           >
             <input
               type="text"
@@ -69,7 +69,7 @@ export default function OrderSummary() {
               className="bg-white border shadow border-gray-100 p-2 w-full"
               name="name"
             />
-            <input
+            <input 
               type="submit"
               className="py-2 rounded uppercase text-white bg-black w-full text-center font-bold cursor-pointer"
               value="Confirmar Pedido"
